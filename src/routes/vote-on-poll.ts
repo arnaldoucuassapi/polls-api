@@ -27,9 +27,9 @@ export async function voteOnPoll(app: FastifyInstance) {
       }
     })
 
-    if (!opt)
+    if (!opt) {
       return reply.status(400).send({ message: "This option is unknown." })
-  
+    }
 
     if (sectionId) {
       const userPreviousVoteOnPoll = await prisma.vote.findUnique({
